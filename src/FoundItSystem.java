@@ -27,7 +27,7 @@ public class FoundItSystem {
             } else if (choice == 2){
                 Student.addFoundItem(founditem);
             } else if (choice == 3){
-                
+                Item.compareDescription(founditem);
             } else if (choice == 4){
                 // No implementation
                 break;   
