@@ -44,6 +44,7 @@ public class FoundItSystem {
         
         System.out.println("\t\tSecurity Center Services"
                 + "\n\t_______________________________________________\n");
+            SecurityCenter.ItemToEdit(founditem);
         
     }
   
