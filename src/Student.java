@@ -40,9 +40,14 @@ public class Student {
         System.out.println("Enter Contact Information: ");
         String ContactInformation = input.nextLine();
         
-        lostItem.add(new LostItem(missingItemLocation, missingItemDescription, ContactInformation));
+        LostItem newLostItem = new LostItem(missingItemLocation, missingItemDescription, ContactInformation);
         
-        System.out.println("Your missing item was successfully added to the system.");
+        System.out.println(addMissingItem(newLostItem, lostItem));
+    }
+    
+    public static String addMissingItem(LostItem newLostItem, ArrayList<LostItem> lostItem) {
+        lostItem.add(newLostItem);
+        return "Your missing item was successfully added to the system.";
     }
     
     public static void addFoundItem(ArrayList<FoundItem> founditem) {
@@ -52,9 +57,14 @@ public class Student {
         System.out.println("In which security center you drop the item?");
         SecurityCenter foundItemDropLocation = new SecurityCenter(input.nextLine());
         
-        founditem.add(new FoundItem(foundItemDropLocation, foundItemDescription));
+        FoundItem newfounditem = new FoundItem(foundItemDropLocation, foundItemDescription);
         
-        System.out.println("the found item was successfully added to the system.");
+        System.out.println(addFoundItem(founditem, newfounditem));
+    }
+    
+    public static String addFoundItem(ArrayList<FoundItem> founditem, FoundItem newFoundItem){
+        founditem.add(newFoundItem);
+        return "the found item was successfully added to the system.";
     }
     
     public static String searchByDescription() {

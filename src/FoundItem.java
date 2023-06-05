@@ -33,4 +33,12 @@ public class FoundItem extends Item {
     public void setisReceived(boolean isReceived) {
         this.isReceived = isReceived;
     }
+    
+    @Override
+    public String toString() {
+        return ("Description: " + super.getDescription()
+                + "\nDrop Security Security Center: " + this.DropSecuritySecurityCenter
+                + "\nReceived by: " + student.toString());
+    }
+    
 }

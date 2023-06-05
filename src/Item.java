@@ -21,20 +21,19 @@ public class Item {
     }
     
     public static void compareDescription(ArrayList<FoundItem> founditem) {
-        FoundItem foundItem = MatchingFoundItemInfo(Student.searchByDescription(), founditem);
-        if (foundItem != null){
-            displayMatchingFoundItemInfo(foundItem);
-        } else {
-            System.out.println("No matching found item found.");
+        for (int i = 0; i < founditem.size(); i++) {
+            FoundItem foundItem = founditem.get(i);
+            if (MatchingFoundItemInfo(Student.searchByDescription(), foundItem) != null) {
+                displayMatchingFoundItemInfo(foundItem);
+            } else {
+                System.out.println("No matching found item found.");
+            }
         }
     }
     
-   public static FoundItem MatchingFoundItemInfo(String word, ArrayList<FoundItem>founditem) {
-       for (int i = 0; i < founditem.size(); i++) {
-           FoundItem foundItem = founditem.get(i);
-        if (word.toLowerCase().contains(foundItem.getDescription().toLowerCase()) && foundItem.isReceived() == false) {
-            return foundItem;
-        }
+   public static FoundItem MatchingFoundItemInfo(String word, FoundItem founditem) {
+        if (word.toLowerCase().contains(founditem.getDescription().toLowerCase()) && founditem.isReceived() == false) {
+            return founditem;
     }
     return null;
    }

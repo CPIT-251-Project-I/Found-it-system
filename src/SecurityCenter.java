@@ -21,13 +21,15 @@ public class SecurityCenter {
     }
 
     static void ItemToEdit(ArrayList<FoundItem> founditem) {
-        FoundItem MatchedFoundItem = Item.MatchingFoundItemInfo(Student.searchByDescription(), founditem);
-        if (MatchedFoundItem != null) {
-            Item.displayMatchingFoundItemInfo(MatchedFoundItem);
-        } else {
-            System.out.println("No matching found item found.");
+        for (int i = 0; i < founditem.size(); i++) {
+            FoundItem foundItem = founditem.get(i);
+            if (Item.MatchingFoundItemInfo(Student.searchByDescription(), foundItem) != null) {
+                Item.displayMatchingFoundItemInfo(foundItem);
+                registerRecipientInfo(foundItem);
+            } else {
+                System.out.println("No matching found item found.");
+            }
         }
-        registerRecipientInfo(MatchedFoundItem);
     }
 
     // Method to register recipient information
@@ -45,12 +47,9 @@ public class SecurityCenter {
 
         founditem.setStudent(student);
 
-        System.out.println("Recipient " + student.getName() + " with ID " + student.getID() + " successfully registered.");
-
-        System.out.println("_______________________________________________");
-
         changeItemStatus(founditem, input);
         // Code to register recipient information goes here
+        System.out.println(updateItemInfo(founditem, student));
     }
 
     // Method to change lost item status
@@ -58,6 +57,12 @@ public class SecurityCenter {
         // Code to changelost item status goes here
         System.out.println("\nReceived: true/false");
         founditem.setisReceived(input.nextBoolean());
+    }
+    
+    static String updateItemInfo(FoundItem founditem, Student student){
+        return "Recipient " + student.getName() + " with ID " + student.getID() + " successfully registered."
+                + "\n_______________________________________________"
+                + "\nThe Item has been received!";
     }
 
     @Override
