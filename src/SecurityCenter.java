@@ -45,8 +45,6 @@ public class SecurityCenter {
 
         Student student = new Student(RecipientID, RecipientName);
 
-        founditem.setStudent(student);
-
         changeItemStatus(founditem, input);
         // Code to register recipient information goes here
         System.out.println(updateItemInfo(founditem, student));
@@ -60,6 +58,7 @@ public class SecurityCenter {
     }
     
     static String updateItemInfo(FoundItem founditem, Student student){
+        founditem.setStudent(student);
         return "Recipient " + student.getName() + " with ID " + student.getID() + " successfully registered."
                 + "\n_______________________________________________"
                 + "\nThe Item has been received!";
